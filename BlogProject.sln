@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{D425D49D-73A9-4D89-A24A-6A2490D73FDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{D2B6F67C-C6A2-4A51-8C50-BFE2F21D5773}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{6F13B0ED-B8B3-4A7F-ADD8-79BA63E39BB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D425D49D-73A9-4D89-A24A-6A2490D73FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D425D49D-73A9-4D89-A24A-6A2490D73FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D425D49D-73A9-4D89-A24A-6A2490D73FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D425D49D-73A9-4D89-A24A-6A2490D73FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2B6F67C-C6A2-4A51-8C50-BFE2F21D5773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B6F67C-C6A2-4A51-8C50-BFE2F21D5773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B6F67C-C6A2-4A51-8C50-BFE2F21D5773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B6F67C-C6A2-4A51-8C50-BFE2F21D5773}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F13B0ED-B8B3-4A7F-ADD8-79BA63E39BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F13B0ED-B8B3-4A7F-ADD8-79BA63E39BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F13B0ED-B8B3-4A7F-ADD8-79BA63E39BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F13B0ED-B8B3-4A7F-ADD8-79BA63E39BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E6705AB-7ED0-4243-9BDE-53717FF6C67E}
+	EndGlobalSection
+EndGlobal
