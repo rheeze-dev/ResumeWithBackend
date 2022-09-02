@@ -1,4 +1,5 @@
 ﻿@page "/blog"
+@using Client.Components.Public.Blog
 
 <Client.Components.Public.Shared.Navbar />
 
@@ -9,31 +10,13 @@
             <p>Click a category card to view its blog posts.</p>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card shadow mb-2">
-                        <img src="assets/img/other/placeholder.jpg" class="card-img-top" alt="Category thumbnail image" />
-                        <div class="card-body">
-                            <h3 class="card-title">Category name</h3>
-                        </div>.
-                        <a href="/" class="btn btn-primary stretched-link">View posts</a>
-                    </div>
+                    <CategoryCard />
                 </div>
                 <div class="col-md-4">
-                    <div class="card shadow mb-2">
-                        <img src="assets/img/other/placeholder.jpg" class="card-img-top" alt="Category thumbnail image" />
-                        <div class="card-body">
-                            <h3 class="card-title">Category name</h3>
-                        </div>.
-                        <a href="/" class="btn btn-primary stretched-link">View posts</a>
-                    </div>
+                    <CategoryCard />
                 </div>
                 <div class="col-md-4">
-                    <div class="card shadow mb-2">
-                        <img src="assets/img/other/placeholder.jpg" class="card-img-top" alt="Category thumbnail image" />
-                        <div class="card-body">
-                            <h3 class="card-title">Category name</h3>
-                        </div>.
-                        <a href="/" class="btn btn-primary stretched-link">View posts</a>
-                    </div>
+                    <CategoryCard />
                 </div>
             </div>
         </div>
