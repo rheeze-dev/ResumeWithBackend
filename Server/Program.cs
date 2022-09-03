@@ -48,11 +48,15 @@ if (app.Environment.IsDevelopment())
 
 {
 
-    app.UseSwagger();
-
-    app.UseSwaggerUI();
-
 }
+
+app.UseSwagger();
+
+app.UseSwaggerUI(swaggerUIOptions =>
+{
+    swaggerUIOptions.SwaggerEndpoint("/swagger/v1/swagger.json", "RheezeDevServer API");
+    swaggerUIOptions.RoutePrefix = String.Empty;
+});
 
 app.UseHttpsRedirection();
 
