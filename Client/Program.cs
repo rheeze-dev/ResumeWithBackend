@@ -1,3 +1,4 @@
+global using Shared.Models;
 using Client;
 using Client.Services;
 using Microsoft.AspNetCore.Components.Web;
