@@ -1,8 +1,10 @@
-﻿body {
-    font-family: 'Reboto', sans-serif;
+﻿﻿@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,400&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
 }
 
-btn {
+.btn {
     border-radius: 0px;
 }
 
@@ -11,7 +13,22 @@ btn {
 }
 
 .shadow {
-    box-shadow: 0 0.15rem 0.4rem rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.4) !important;
+}
+
+.admin-area-main {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-color: #404040;
+}
+
+.admin-area-content {
+    overflow-y: scroll;
+    padding: 10vw;
 }
 
 .shadow-no-hover {
@@ -30,22 +47,22 @@ btn {
     min-height: 90vh !important;
 }
 
-bg-white-94 {
+.bg-white-94 {
     background-color: rgba(255, 255, 255, 0.94);
 }
 
-f-size-3 {
+.f-size-3 {
     font-size: 3rem;
 }
 
-@media (max-width: 992px){
+@media (max-width: 992px) {
     .md-and-smaller-my-3 {
         margin-top: 1rem !important;
         margin-bottom: 1rem !important;
     }
 
     .bg-motherboard-dev {
-        background-image: url(".../assets/img/publicbackgrounds/bg-motherboard.jpg");
+        background-image: url("../assets/img/publicbackgrounds/bg-motherboard.jpg");
     }
 }
 
