@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Shared.Models;
-using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Server.Controllers
 {
@@ -42,7 +36,7 @@ namespace Server.Controllers
                 string guid = Guid.NewGuid().ToString();
                 string imageFileName = guid + uploadedImage.NewImageFileExtension;
 
-                string fullImageFileSystemPath = $"{_webHostEnvironment.ContentRootPath}\\wwwrooot\\uploads\\{imageFileName}";
+                string fullImageFileSystemPath = $"{_webHostEnvironment.ContentRootPath}\\wwwroot\\uploads\\{imageFileName}";
 
                 FileStream fileStream = System.IO.File.Create(fullImageFileSystemPath);
                 byte[] imageContentAsByteArray = Convert.FromBase64String(uploadedImage.NewImageBase64Content);
