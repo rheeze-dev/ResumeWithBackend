@@ -20,6 +20,16 @@ namespace Client.Services
             set { _categories = value; NotifyCategoriesDataChanged(); }
         }
 
+        internal async Task<Category> GetCategoryByCategoryId(int categoryId)
+        {
+            if (_categories == null)
+            {
+                await GetCategoriesFromDatabaseAndCache();
+            }
+
+            return _categories.First(category => category.CategoryId == categoryId);
+        }
+
         private bool _gettingCategoriesFromDatabaseAndCaching = false;
         internal async Task GetCategoriesFromDatabaseAndCache()
         {
