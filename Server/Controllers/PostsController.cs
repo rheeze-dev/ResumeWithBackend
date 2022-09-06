@@ -1,7 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
+using Shared.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Server.Controllers
 {
@@ -32,6 +38,15 @@ namespace Server.Controllers
             return Ok(posts);
         }
 
+        [HttpGet("dto/{id}")]
+        public async Task<IActionResult> GetDTO(int id)
+        {
+            Post post = await GetPostByPostId(id);
+            PostDTO postDTO = _mapper.Map<PostDTO>(post);
+
+            return Ok(postDTO);
+        }
+
         // website.com/api/posts/2
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
@@ -60,7 +75,7 @@ namespace Server.Controllers
 
                 if (postToCreate.Published == true)
                 {
-                    // EST DateTime
+                    // European DateTime
                     postToCreate.PublishDate = DateTime.UtcNow.ToString("dd/MM/yyyy hh:mm");
                 }
 
