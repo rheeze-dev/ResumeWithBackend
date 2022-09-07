@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Shared.Models;
+using System;
 
 namespace Server.Data
 {
@@ -9,14 +11,11 @@ namespace Server.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
-
-        }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Call the base version of this method as well, else we get an error later on.
+            // Call the base version of this method as well, else we get an error later on.
             base.OnModelCreating(modelBuilder);
 
             #region Categories seed
@@ -91,7 +90,7 @@ namespace Server.Data
                     ThumbnailImagePath = "uploads/placeholder.jpg",
                     Title = postTitle,
                     Excerpt = $"This is the excerpt for post {i}. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
-                    Content = String.Empty,
+                    Content = string.Empty,
                     PublishDate = DateTime.UtcNow.ToString("dd/MM/yyyy hh:mm"),
                     Published = true,
                     Author = "John Doe",
@@ -100,6 +99,57 @@ namespace Server.Data
             }
 
             modelBuilder.Entity<Post>().HasData(postsToSeed);
+
+            #endregion
+
+            #region Administrator role seed
+
+            const string administratorRoleName = "Administrator";
+
+            IdentityRole administratorRoleToSeed = new()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = administratorRoleName,
+                NormalizedName = administratorRoleName.ToUpperInvariant()
+            };
+
+            modelBuilder.Entity<IdentityRole>().HasData(administratorRoleToSeed);
+
+            #endregion
+
+            #region Administrator user seed
+
+            const string administratorUserEmail = "admin@johndoe.com";
+
+            var passwordHasher = new PasswordHasher<IdentityUser>();
+
+            IdentityUser administratorUserToSeed = new()
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = administratorUserEmail,
+                NormalizedUserName = administratorUserEmail.ToUpperInvariant(),
+                Email = administratorUserEmail,
+                NormalizedEmail = administratorUserEmail.ToUpperInvariant(),
+                PasswordHash = string.Empty,
+            };
+
+            string hashedPassword = passwordHasher.HashPassword(administratorUserToSeed, "Password1!");
+
+            administratorUserToSeed.PasswordHash = hashedPassword;
+
+            modelBuilder.Entity<IdentityUser>().HasData(administratorUserToSeed);
+
+            #endregion
+
+            #region Add the administrator user to the administrator role
+
+            IdentityUserRole<string> identityUserRoleToSeed = new()
+            {
+                RoleId = administratorRoleToSeed.Id,
+                UserId = administratorUserToSeed.Id
+            };
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(identityUserRoleToSeed);
 
             #endregion
         }
