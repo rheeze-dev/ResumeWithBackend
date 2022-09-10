@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +37,8 @@ namespace Server.Controllers
             return Ok(categories);
         }
 
-
+        //[DisableCors]
+        [EnableCors("CorsPolicy")]
         // website.com/api/categories/withposts
         [HttpGet("withposts")]
         [AllowAnonymous]
