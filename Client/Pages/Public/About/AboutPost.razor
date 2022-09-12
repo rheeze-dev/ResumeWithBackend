@@ -1,4 +1,4 @@
-﻿@page "/blog/{CategoryName}/{PostTitle}"
+﻿@page "/about/{CategoryName}/{PostTitle}"
 
 <Client.Components.Public.Shared.Navbar />
 
@@ -13,15 +13,15 @@
 			<div class="col-12 px-md-0">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb md-f-size-1-5">
-						<li class="breadcrumb-item"><a href="/blog">Blog</a></li>
-						<li class="breadcrumb-item"><a href="@($"/blog/{CategoryName}")">@_category.Name</a></li>
+						<li class="breadcrumb-item"><a href="/about">About</a></li>
+						<li class="breadcrumb-item"><a href="@($"/about/{CategoryName}")">@_category.Name</a></li>
 						<li class="breadcrumb-item active" aria-current="page">@_post.Title</li>
 					</ol>
 				</nav>
 			</div>
 
 			<div class="col-12 shadow-no-hover py-5 px-md-5 mt-3">
-				<article class="blog-post">
+				<article class="about-post">
 					<h2 class="fst-italic">@_post.Title</h2>
 					<p>@_post.PublishDate.Split(' ').First() by <a href="/about" class="text-dark">@_post.Author</a></p>
 
@@ -37,7 +37,7 @@
 			</div>
 
 			<div class="col-12 px-0 d-flex justify-content-end">
-				<a href="@($"/blog/{CategoryName}")" class="btn btn-secondary shadow">
+				<a href="@($"/about/{CategoryName}")" class="btn btn-secondary shadow">
 					<i class="fas fa-arrow-left"></i> Back to all posts in @_category.Name
 				</a>
 			</div>

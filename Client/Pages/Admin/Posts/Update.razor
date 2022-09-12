@@ -1,5 +1,4 @@
 ﻿@page "/admin/posts/update/{PostId:int}"
-@using System.Net;
 
 <AuthorizeView Roles="Administrator">
 	<Authorized Context="Auth">
@@ -78,8 +77,8 @@
 									<label for="postPublished">Post published</label>
 									<InputCheckbox @bind-Value="@_postToUpdate.Published" class="form-check-input" id="postPublished" aria-describedby="postPublishedHelp" />
 									<div id="postPublishedHelp" class="form-text">
-										The value of this specifies whether this blog post is visible on the user facing site or not.
-										Publishing a blog post also updates the value of the PublishDate field.
+										The value of this specifies whether this about post is visible on the user facing site or not.
+										Publishing a about post also updates the value of the PublishDate field.
 									</div>
 								</div>
 

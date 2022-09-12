@@ -1,0 +1,131 @@
+﻿<div class="modal fade @_modalClass" id="informationalModal" tabindex="-1" aria-labelledby="informationalModalLabel" role="dialog" style="display:@_modalDisplay">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="informationalModalLabel">Blazor Ecommerce</h5>
+                <button @onclick="CloseModal" type="button" class="btn-close" data-bs-dismiss="modal" aira-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="carouselWithIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    </div>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="assets/img/publicbackgrounds/bla" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/Blazor-Ecommerce.png" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>
+
+                        <div class="carousel-item">
+                            <a href="assets/img/publicbackgrounds/BlazorEcommerce-Cart.png" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/BlazorEcommerce-Cart.png" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>
+
+                        <div class="carousel-item">
+                            <a href="assets/img/publicbackgrounds/BlazorEcommerce-Movies.png" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/BlazorEcommerce-Movies.png" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>
+
+                        <div class="carousel-item">
+                            <a href="assets/img/publicbackgrounds/BlazorEcommerce-Products.png" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/BlazorEcommerce-Products.png" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselWithIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselWithIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <p class="text-muted my-2">
+                    Click an image to view it full screen (opens a new tab).
+                </p>
+
+               @* <a href="https://rheeze.online" class="btn btn-lg d-block mx-5 btn-primary mt-5 shadow" target="_blank">
+                    <i class="fas fa-laptop-code"></i> Live Demo
+                </a>*@
+
+                <a href="https://github.com/rheeze-dev/BlazorEcommerce" class="btn btn-lg d-block mx-5 bg-dark text-white mt-3 shadow" target="_blank">
+                    <i class="fab fa-github-square"></i> Github Repo
+                </a>
+
+                <h1 class="mt-5">Description</h1>
+
+                <p>
+                    This is an ecommerce website. Technologies used to create this are .NET 6 Web API, Entity Framework Core 6, Blazor WebAssembly, 
+                    Visual studio 2022 for the IDE and Microsoft SQL Server for the database. This online shop features products, categories, 
+                    product variants, search bar, pagination, basic cart, orders, add a delivery address, and can checkout and pay using stripe. 
+                    It has an admin dashboard that is used for the CRUD operations. It also has authorization and authentication using JSON web tokens.
+                </p>
+
+                <h1 class="mt-5">Core Features</h1>
+                <ul>
+                    <li>.NET 6 Web API</li>
+                    <li>Entity Framework Core 6</li>
+                    <li>Blazor WebAssembly</li>
+                    <li>IDE - Visual Studio 2022</li>
+                    <li>Database - MS SQL Server</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Bootstrap</li>
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button @onclick="CloseModal" type="button" class="btn btn-primary btn-lg shadow" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (_showBackdrop == true)
+{
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code
+{
+    [Parameter] public EventCallback ParentMethodToCallOnClickBtnClose { get; set; }
+    private string _modalDisplay = null;
+    private string _modalClass = null;
+    private bool _showBackdrop = false;
+
+    protected override void OnInitialized() => ShowModal();
+
+    private void ShowModal()
+    {
+        _modalDisplay = "block;";
+        _modalClass = "show";
+        _showBackdrop = true;
+    }
+
+    private void CloseModal()
+    {
+        _modalDisplay = "none;";
+        _modalClass = string.Empty;
+        _showBackdrop = false;
+        ParentMethodToCallOnClickBtnClose.InvokeAsync();
+    }
+}

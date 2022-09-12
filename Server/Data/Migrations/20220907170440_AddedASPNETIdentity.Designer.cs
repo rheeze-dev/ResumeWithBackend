@@ -350,7 +350,7 @@ namespace Server.Data.Migrations
                         new
                         {
                             PostId = 1,
-                            Author = "John Doe",
+                            Author = "Rheeze Gyver Kalahi",
                             CategoryId = 1,
                             Content = "",
                             Excerpt = "This is the excerpt for post 1. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
@@ -362,7 +362,7 @@ namespace Server.Data.Migrations
                         new
                         {
                             PostId = 2,
-                            Author = "John Doe",
+                            Author = "Rheeze Gyver Kalahi",
                             CategoryId = 2,
                             Content = "",
                             Excerpt = "This is the excerpt for post 2. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
@@ -374,7 +374,7 @@ namespace Server.Data.Migrations
                         new
                         {
                             PostId = 3,
-                            Author = "John Doe",
+                            Author = "Rheeze Gyver Kalahi",
                             CategoryId = 3,
                             Content = "",
                             Excerpt = "This is the excerpt for post 3. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
@@ -386,7 +386,7 @@ namespace Server.Data.Migrations
                         new
                         {
                             PostId = 4,
-                            Author = "John Doe",
+                            Author = "Rheeze Gyver Kalahi",
                             CategoryId = 1,
                             Content = "",
                             Excerpt = "This is the excerpt for post 4. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
@@ -398,7 +398,7 @@ namespace Server.Data.Migrations
                         new
                         {
                             PostId = 5,
-                            Author = "John Doe",
+                            Author = "Rheeze Gyver Kalahi",
                             CategoryId = 2,
                             Content = "",
                             Excerpt = "This is the excerpt for post 5. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
@@ -410,7 +410,7 @@ namespace Server.Data.Migrations
                         new
                         {
                             PostId = 6,
-                            Author = "John Doe",
+                            Author = "Rheeze Gyver Kalahi",
                             CategoryId = 3,
                             Content = "",
                             Excerpt = "This is the excerpt for post 6. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",

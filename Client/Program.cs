@@ -1,10 +1,16 @@
 global using Shared.Models;
 global using Shared.Static;
-using Blazored.LocalStorage;
-using Client;
-using Client.Providers;
-using Client.Services;
-using Microsoft.AspNetCore.Components.Authorization;
+global using Blazored.LocalStorage;
+global using Client;
+global using Client.Providers;
+global using Client.Services;
+global using System.Net.Http.Headers;
+global using Microsoft.AspNetCore.Components.Authorization;
+global using System.Net;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using Client.Static;
+global using System.Net.Http.Json;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

@@ -2,9 +2,29 @@
 
 <Client.Components.Public.Shared.Navbar />
 
-@if (_showingExamplePortfolioProjectModalWindow == true)
+@if (_onlinePortfolioModalWindow == true)
 {
-    <Client.Components.Public.Portfolio.ExamplePortfolioProjectModalWindow ParentMethodToCallOnClickBtnClose="() => _showingExamplePortfolioProjectModalWindow = false" />
+    <Client.Components.Public.Portfolio.OnlinePortfolioModalWindow ParentMethodToCallOnClickBtnClose="() => _onlinePortfolioModalWindow = false" />
+}
+else if (_blazorEcommerceModalWindow == true)
+{
+    <Client.Components.Public.Portfolio.BlazorEcommerceModalWindow ParentMethodToCallOnClickBtnClose="() => _blazorEcommerceModalWindow = false" />
+}
+else if (_baptcModalWindow == true)
+{
+    <Client.Components.Public.Portfolio.BaptcSystemModalWindow ParentMethodToCallOnClickBtnClose="() => _baptcModalWindow = false" />
+}
+else if (_myOldResumeModalWindow == true)
+{
+    <Client.Components.Public.Portfolio.MyOldResumeModalWindow ParentMethodToCallOnClickBtnClose="() => _myOldResumeModalWindow = false" />
+}
+else if (_guessingGameModalWindow == true)
+{
+    <Client.Components.Public.Portfolio.GuessingGameModalWindow ParentMethodToCallOnClickBtnClose="() => _guessingGameModalWindow = false" />
+}
+else if (_racingGameModalWindow == true)
+{
+    <Client.Components.Public.Portfolio.RacingGameModalWindow ParentMethodToCallOnClickBtnClose="() => _racingGameModalWindow = false" />
 }
 
 <main class="container min-vh-90 py-5">
@@ -15,18 +35,19 @@
             <p>On this page you can view the commercial-grade projects I have completed.</p>
 
             <div class="row mt-4">
+
                 <div class="col-md-4 my-2">
                     <div class="card shadow">
-                        <img src="assets/img/publicbackgrounds/bg-motherboard.jpg" alt="Portfolio project thumbnail image" />
+                        <img src="assets/img/publicbackgrounds/OnlineResume.png" alt="Portfolio project thumbnail image" />
 
                         <div class="card-body">
-                            <h3 class="card-title fw-bold">My First Project</h3>
+                            <h3 class="card-title fw-bold">Resume and Portfolio</h3>
                             <p class="card-text">
-                                @(String.Join(" ", _exampleExcerpt.Split().Take(43).ToArray()))...
+                                @(String.Join(" ", _onlinePortfolio.Split().Take(43).ToArray()))...
                             </p>
                         </div>
 
-                        <button @onclick="() => _showingExamplePortfolioProjectModalWindow = true" class="btn btn-primary stretched-link">
+                        <button @onclick="() => _onlinePortfolioModalWindow = true" class="btn btn-primary stretched-link">
                             <i class="fas fa-info-circle"></i> More information
                         </button>
                     </div>
@@ -34,16 +55,17 @@
 
                 <div class="col-md-4 my-2">
                     <div class="card shadow">
-                        <img src="assets/img/publicbackgrounds/bg-motherboard.jpg" alt="Portfolio project thumbnail image" />
+                        <img src="assets/img/publicbackgrounds/Blazor-Ecommerce.png" alt="Portfolio project thumbnail image" />
 
                         <div class="card-body">
-                            <h3 class="card-title fw-bold">My First Project</h3>
+                            <h3 class="card-title fw-bold">Blazor Ecommerce</h3>
                             <p class="card-text">
-                                @(String.Join(" ", _exampleExcerpt.Split().Take(43).ToArray()))...
+
+                                @(String.Join(" ", _blazorEcommerce.Split().Take(43).ToArray()))...
                             </p>
                         </div>
 
-                        <button @onclick="() => _showingExamplePortfolioProjectModalWindow = true" class="btn btn-primary stretched-link">
+                        <button @onclick="() => _blazorEcommerceModalWindow = true" class="btn btn-primary stretched-link">
                             <i class="fas fa-info-circle"></i> More information
                         </button>
                     </div>
@@ -51,20 +73,73 @@
 
                 <div class="col-md-4 my-2">
                     <div class="card shadow">
-                        <img src="assets/img/publicbackgrounds/bg-motherboard.jpg" alt="Portfolio project thumbnail image" />
+                        <img src="assets/img/publicbackgrounds/BAPTC.png" alt="Portfolio project thumbnail image" />
 
                         <div class="card-body">
-                            <h3 class="card-title fw-bold">My First Project</h3>
+                            <h3 class="card-title fw-bold">BAPTC System</h3>
                             <p class="card-text">
-                                @(String.Join(" ", _exampleExcerpt.Split().Take(43).ToArray()))...
+                                @(String.Join(" ", _baptc.Split().Take(43).ToArray()))...
                             </p>
                         </div>
 
-                        <button @onclick="() => _showingExamplePortfolioProjectModalWindow = true" class="btn btn-primary stretched-link">
+                        <button @onclick="() => _baptcModalWindow = true" class="btn btn-primary stretched-link">
                             <i class="fas fa-info-circle"></i> More information
                         </button>
                     </div>
                 </div>
+
+                <div class="col-md-4 my-2">
+                    <div class="card shadow">
+                        <img src="assets/img/publicbackgrounds/OldResume.PNG" alt="Portfolio project thumbnail image" />
+
+                        <div class="card-body">
+                            <h3 class="card-title fw-bold">My old static online resume</h3>
+                            <p class="card-text">
+
+                                @(String.Join(" ", _myOldResume.Split().Take(43).ToArray()))...
+                            </p>
+                        </div>
+
+                        <button @onclick="() => _myOldResumeModalWindow = true" class="btn btn-primary stretched-link">
+                            <i class="fas fa-info-circle"></i> More information
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 my-2">
+                    <div class="card shadow">
+                        <img src="assets/img/publicbackgrounds/GuessingGame.PNG" alt="Portfolio project thumbnail image" />
+
+                        <div class="card-body">
+                            <h3 class="card-title fw-bold">Guessing Game</h3>
+                            <p class="card-text">
+                                @(String.Join(" ", _guessingGame.Split().Take(43).ToArray()))...
+                            </p>
+                        </div>
+
+                        <button @onclick="() => _guessingGameModalWindow = true" class="btn btn-primary stretched-link">
+                            <i class="fas fa-info-circle"></i> More information
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 my-2">
+                    <div class="card shadow">
+                        <img src="assets/img/publicbackgrounds/RacingGame.PNG" alt="Portfolio project thumbnail image" />
+
+                        <div class="card-body">
+                            <h3 class="card-title fw-bold">Racing Game</h3>
+                            <p class="card-text">
+                                @(String.Join(" ", _racingGame.Split().Take(43).ToArray()))...
+                            </p>
+                        </div>
+
+                        <button @onclick="() => _racingGameModalWindow = true" class="btn btn-primary stretched-link">
+                            <i class="fas fa-info-circle"></i> More information
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -74,14 +149,42 @@
 
 @code
 {
-    private bool _showingExamplePortfolioProjectModalWindow = false;
+    private bool _onlinePortfolioModalWindow = false;
+    private bool _blazorEcommerceModalWindow = false;
+    private bool _baptcModalWindow = false;
+    private bool _myOldResumeModalWindow = false;
+    private bool _guessingGameModalWindow = false;
+    private bool _racingGameModalWindow = false;
 
-    private string _exampleExcerpt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida eget tellus nec ornare." +
-                                    " Mauris ac nisi sit amet erat feugiat consequat id sit amet erat. Integer at erat vitae est volutpat gravida sit amet nec velit." +
-                                    " Phasellus et faucibus ex, id feugiat mi. Etiam justo est, sodales nec convallis non, pulvinar in nulla." +
-                                    " Proin sed rutrum neque, ut posuere est. Pellentesque consequat nunc sit amet libero tempus, vitae lacinia est fringilla." +
-                                    " Fusce ullamcorper pellentesque pulvinar. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
-                                    " tempus nisl et tellus efficitur, ac facilisis sapien tristique. Etiam interdum nisl nec aliquet semper." +
-                                    " Curabitur sagittis leo enim, sit amet pretium nisi facilisis id. Donec non maximus nulla, vel dapibus urna." +
-                                    " Aenean a lectus nibh. Nullam luctus vel magna id fermentum.";
+    private string _onlinePortfolio = "This is my current online resume and portfolio. Technology used are Blazor WebAssembly, .NET 6, ASP.NET Core Web API, Entity Framework Core, " +
+                             "HTML, CSS, and Bootstrap 5. The IDE used is Visual Studio 2022 and SQLite for the database. This is currently hosted via Microsoft Azure. " +
+                             "This website seems to be a regular static website but it is not. It has a secured admin area with a Content Management System features " +
+                             "using a data-driven ASP.NET Core Web API and a Blazor WebAssembly front end.";
+
+    private string _blazorEcommerce = "This is an ecommerce website. Technologies used to create this are .NET 6 Web API, Entity Framework Core 6, Blazor WebAssembly, " +
+                                      "Visual studio 2022 for the IDE and Microsoft SQL Server for the database. This online shop features products, categories, " +
+                                      "product variants, search bar, pagination, basic cart, orders, add a delivery address, and can checkout and pay using stripe. " +
+                                      "It has an admin dashboard that is used for the CRUD operations. It also has authorization and authentication using JSON web tokens.";
+
+    private string _baptc = "This is a price monitoring system. Technologies used are ASP.NET Core 2 MVC, Entity Framework Core (Code first approach), jQuery, Ajax, " +
+                            "ASP.NET Core 2 Web API, Dependency Injection, and Email handling using SMTP. IDE used is Visual Studio 2019 and Microsoft SQL Server for " +
+                            "the database. This project is used to monitor and compare the prices of fruits and vegetables weekly, monthly, and yearly to predict what " +
+                            "month is the price for a certain crop is at its lowest and highest in order to educate and give advice to the farmers on what to plant on " +
+                            "a certain month. This system can convert the datas into a graph to be more easier to read and understand and can also be printed or exported.";
+
+    private string _myOldResume = "This is my old static online resume that I have been using before I created my new and improved online resume today." +
+                                    " This was built using html, CSS, javaScript and bootstrap. It is a responsive design meaning it automatically adjusts " +
+                                    " basing on the screen of the device that is viewing it.";
+
+    private string _guessingGame = "Technologies used to create this game are JavaScript, CSS, HTML and DOM manipulation. Game instructions: " +
+                                    "This is a guessing game. The unknown number is a number from 1 to 20. You need to guess this number in order to win the " +
+                                    "game. The Highscore will automatically change everytime you have a score higher than your previous scores. If you guessed 10 " +
+                                    "consecutive wrong numbers, you will lose the game.";
+
+    private string _racingGame = "Technologies to create this game are JavaScript, CSS, HTML and DOM manipulation. Game instructions: This game is a racing game. " +
+                                 "First player to reach the score of 30 wins the game. Click on ROLL DICE button to roll a dice. If 1 is rolled, it will automatically " +
+                                 "switch to the next player and your current score will reset to 0. Click the HOLD button to add your current score to your total " +
+                                 "score. If you click this button, your current score will be added to your total score and it will switch to the other player. " +
+                                 "When a player reaches the score of 30, ROLL DICE button and HOLD button will no longer work. You need to click the NEW GAME button " +
+                                 "inorder to play again.";
 }

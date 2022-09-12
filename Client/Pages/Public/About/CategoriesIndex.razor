@@ -1,5 +1,5 @@
-﻿@page "/blog/{CategoryName}"
-@using Client.Components.Public.Blog
+﻿@page "/about/{CategoryName}"
+@using Client.Components.Public.About
 
 <Client.Components.Public.Shared.Navbar />
 
@@ -14,29 +14,30 @@
 			{
 				<nav aria-label="breadcrumb" class="ps-3 row md-f-size-1-5">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="/blog">Blog</a></li>
+						<li class="breadcrumb-item"><a href="/about">About</a></li>
 						<li class="breadcrumb-item active" aria-current="page">@_category.Name</li>
 					</ol>
 				</nav>
 
-				<h1 class="my-3">Blog posts in @_category.Name</h1>
+				<h1 class="my-3">About posts in @_category.Name</h1>
 
 				@if (_publishedPosts.Count < 1)
 				{
 					<h3>No categories found.</h3>
 				}
-				else if (_publishedPosts.Count < 3)
+				@*else if (_publishedPosts.Count < 3)*@
+				else
 				{
 					<div class="row">
 						@foreach (var post in _publishedPosts)
 						{
 							<div class="col-md-4">
-								<BlogPostCard Category="_category" Post="post" />
+								<AboutPostCard Category="_category" Post="post" />
 							</div>
 						}
 					</div>
 				}
-				else
+				@*else
 				{
 					@if (_publishedPosts.Count % 3 == 0)
 					{
@@ -44,13 +45,13 @@
 						{
 							<div class="row">
 								<div class="col-md-4">
-									<BlogPostCard Category="_category" Post="_publishedPosts[i]" />
+									<AboutPostCard Category="_category" Post="_publishedPosts[i]" />
 								</div>
 								<div class="col-md-4">
-									<BlogPostCard Category="_category" Post="_publishedPosts[i + 1]" />
+									<AboutPostCard Category="_category" Post="_publishedPosts[i + 1]" />
 								</div>
 								<div class="col-md-4">
-									<BlogPostCard Category="_category" Post="_publishedPosts[i + 2]" />
+									<AboutPostCard Category="_category" Post="_publishedPosts[i + 2]" />
 								</div>
 							</div>
 						}
@@ -61,23 +62,23 @@
 						{
 							<div class="row">
 								<div class="col-md-4">
-									<BlogPostCard Category="_category" Post="_publishedPosts[i]" />
+									<AboutPostCard Category="_category" Post="_publishedPosts[i]" />
 								</div>
 								<div class="col-md-4">
-									<BlogPostCard Category="_category" Post="_publishedPosts[i + 1]" />
+									<AboutPostCard Category="_category" Post="_publishedPosts[i + 1]" />
 								</div>
 								<div class="col-md-4">
-									<BlogPostCard Category="_category" Post="_publishedPosts[i + 2]" />
+									<AboutPostCard Category="_category" Post="_publishedPosts[i + 2]" />
 								</div>
 							</div>
 						}
 
 						<div class="row">
 							<div class="col-md-4">
-								<BlogPostCard Category="_category" Post="_publishedPosts[_publishedPosts.Count - 2]" />
+								<AboutPostCard Category="_category" Post="_publishedPosts[_publishedPosts.Count - 2]" />
 							</div>
 							<div class="col-md-4">
-								<BlogPostCard Category="_category" Post="_publishedPosts[_publishedPosts.Count - 1]" />
+								<AboutgPostCard Category="_category" Post="_publishedPosts[_publishedPosts.Count - 1]" />
 							</div>
 						</div>
 					}
@@ -87,24 +88,24 @@
 						{
 							<div class="row">
 								<div class="col-md-4">
-									<BlogPostCard Category="_category" Post="_publishedPosts[i]" />
+									<AboutPostCard Category="_category" Post="_publishedPosts[i]" />
 								</div>
 								<div class="col-md-4">
-									<BlogPostCard Category="_category" Post="_publishedPosts[i + 1]" />
+									<AboutPostCard Category="_category" Post="_publishedPosts[i + 1]" />
 								</div>
 								<div class="col-md-4">
-									<BlogPostCard Category="_category" Post="_publishedPosts[i + 2]" />
+									<AboutPostCard Category="_category" Post="_publishedPosts[i + 2]" />
 								</div>
 							</div>
 						}
 
 						<div class="row">
 							<div class="col-md-4">
-								<BlogPostCard Category="_category" Post="_publishedPosts[_publishedPosts.Count - 1]" />
+								<AboutPostCard Category="_category" Post="_publishedPosts[_publishedPosts.Count - 1]" />
 							</div>
 						</div>
 					}
-				}
+				}*@
 			}
 		</div>
 	</div>

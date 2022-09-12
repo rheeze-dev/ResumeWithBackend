@@ -1,0 +1,141 @@
+﻿@page "/about"
+@using Client.Components.Public.About
+
+<Client.Components.Public.Shared.Navbar />
+
+<main class="container min-vh-90 py-5">
+    <div class="row">
+        <div class="col">
+            <div id="test">
+                <h1 class="my-3">About</h1>
+                @*<button class="btn btn-primary float-end addButton" href="/admin/categories/create">
+                    <i class="fas fa-plus"></i> Add / Edit
+                </button>*@
+                <a href="/admin" class="btn btn-success me-5">
+                    <i class="fas fa-plus"></i> Add / Edit
+                </a>
+            </div>
+            
+            <p>Click a category card to view its about posts.</p>
+
+            <div class="row">
+                @if (InMemoryDatabaseCache.Categories == null)
+                {
+                    <LoadingDot />
+                }
+                else
+                {
+                    @if (InMemoryDatabaseCache.Categories.Count < 1)
+                    {
+                        <h3>No categories found.</h3>
+                    }
+                    else if (InMemoryDatabaseCache.Categories.Count < 3)
+                    {
+                        <div class="row">
+                            @foreach (var category in InMemoryDatabaseCache.Categories)
+                            {
+                                <div class="col-md-4">
+                                    <CategoryCard Category="category" />
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        @if (InMemoryDatabaseCache.Categories.Count % 3 == 0)
+                        {
+                            @for (int i = 0; i < InMemoryDatabaseCache.Categories.Count; i += 3)
+                            {
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <CategoryCard Category="InMemoryDatabaseCache.Categories[i]" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <CategoryCard Category="InMemoryDatabaseCache.Categories[i + 1]" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <CategoryCard Category="InMemoryDatabaseCache.Categories[i + 2]" />
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else if (InMemoryDatabaseCache.Categories.Count % 3 == 2)
+                        {
+                            @for (int i = 0; i < InMemoryDatabaseCache.Categories.Count - 2; i += 3)
+                            {
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <CategoryCard Category="InMemoryDatabaseCache.Categories[i]" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <CategoryCard Category="InMemoryDatabaseCache.Categories[i + 1]" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <CategoryCard Category="InMemoryDatabaseCache.Categories[i + 2]" />
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <CategoryCard Category="InMemoryDatabaseCache.Categories[InMemoryDatabaseCache.Categories.Count - 2]" />
+                                </div>
+                                <div class="col-md-4">
+                                    <CategoryCard Category="InMemoryDatabaseCache.Categories[InMemoryDatabaseCache.Categories.Count - 1]" />
+                                </div>
+                            </div>
+                        }
+                        else if (InMemoryDatabaseCache.Categories.Count % 3 == 1)
+                        {
+                            @for (int i = 0; i < InMemoryDatabaseCache.Categories.Count - 1; i += 3)
+                            {
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <CategoryCard Category="InMemoryDatabaseCache.Categories[i]" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <CategoryCard Category="InMemoryDatabaseCache.Categories[i + 1]" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <CategoryCard Category="InMemoryDatabaseCache.Categories[i + 2]" />
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <CategoryCard Category="InMemoryDatabaseCache.Categories[InMemoryDatabaseCache.Categories.Count - 1]" />
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<Client.Components.Public.Shared.Footer />
+
+@implements IDisposable
+@code
+{
+    [Inject] InMemoryDatabaseCache InMemoryDatabaseCache { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        InMemoryDatabaseCache.OnCategoriesDataChanged += StateHasChanged;
+
+        if (InMemoryDatabaseCache.Categories == null)
+        {
+            await InMemoryDatabaseCache.GetCategoriesFromDatabaseAndCache(true);
+        }
+    }
+
+    // Unsubscribe from events Dispose(), else we'll create a memory leak.
+    public void Dispose()
+    {
+        InMemoryDatabaseCache.OnCategoriesDataChanged -= StateHasChanged;
+    }
+}

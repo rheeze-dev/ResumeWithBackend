@@ -1,0 +1,127 @@
+﻿<div class="modal fade @_modalClass" id="informationalModal" tabindex="-1" aria-labelledby="informationalModalLabel" role="dialog" style="display:@_modalDisplay">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="informationalModalLabel">BAPTC System</h5>
+                <button @onclick="CloseModal" type="button" class="btn-close" data-bs-dismiss="modal" aira-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="carouselWithIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                   @*     <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>*@
+                    </div>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="assets/img/publicbackgrounds/Baptc.png" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/Baptc.png" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>
+
+                       @* <div class="carousel-item">
+                            <a href="assets/img/publicbackgrounds/bg-motherboard.jpg" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/bg-motherboard.jpg" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>
+
+                        <div class="carousel-item">
+                            <a href="assets/img/publicbackgrounds/bg-motherboard-dev.jpg" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/bg-motherboard-dev.jpg" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>*@
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselWithIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselWithIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <p class="text-muted my-2">
+                    Click an image to view it full screen (opens a new tab).
+                </p>
+
+               @* <a href="https://rheeze.online" class="btn btn-lg d-block mx-5 btn-primary mt-5 shadow" target="_blank">
+                    <i class="fas fa-laptop-code"></i> Live Demo
+                </a>*@
+
+                <a href="https://bitbucket.org/rheeze-dev/baptcsystem/src/master/" class="btn btn-lg d-block mx-5 bg-dark text-white mt-3 shadow" target="_blank">
+                    <i class="fab fa-bitbucket"></i> Bitbucket Repo
+                </a>
+
+                <h1 class="mt-5">Description</h1>
+
+                <p>
+                    This is a price monitoring system. Technologies used are ASP.NET Core 2 MVC, Entity Framework Core (Code first approach), jQuery, Ajax, 
+                    ASP.NET Core 2 Web API, Dependency Injection, and Email handling using SMTP. IDE used is Visual Studio 2019 and Microsoft SQL Server for 
+                    the database. This project is used to monitor and compare the prices of fruits and vegetables weekly, monthly, and yearly to predict what 
+                    month is the price for a certain crop is at its lowest and highest in order to educate and give advice to the farmers on what to plant on 
+                    a certain month. This system can convert the datas into a graph to be more easier to read and understand and can also be printed or exported.
+                </p>
+
+                <h1 class="mt-5">Core Features</h1>
+                <ul>
+                    <li>ASP.NET Core 2 MVC</li>
+                    <li>Entity Framework Core</li>
+                    <li>jQuery</li>
+                    <li>Ajax</li>
+                    <li>ASP.NET Core 2 Web API</li>
+                    <li>Email handling using SMTP</li>
+                    <li>IDE - Visual Studio 2019</li>
+                    <li>Database - MS SQL Server</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>javaScript</li>
+                    <li>Bootstrap</li>
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button @onclick="CloseModal" type="button" class="btn btn-primary btn-lg shadow" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (_showBackdrop == true)
+{
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code
+{
+    [Parameter] public EventCallback ParentMethodToCallOnClickBtnClose { get; set; }
+    private string _modalDisplay = null;
+    private string _modalClass = null;
+    private bool _showBackdrop = false;
+
+    protected override void OnInitialized() => ShowModal();
+
+    private void ShowModal()
+    {
+        _modalDisplay = "block;";
+        _modalClass = "show";
+        _showBackdrop = true;
+    }
+
+    private void CloseModal()
+    {
+        _modalDisplay = "none;";
+        _modalClass = string.Empty;
+        _showBackdrop = false;
+        ParentMethodToCallOnClickBtnClose.InvokeAsync();
+    }
+}

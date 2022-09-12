@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using Shared.Models;
-
-namespace Server.Data;
+﻿namespace Server.Data;
 
 internal sealed class DTOMappings : Profile
 {

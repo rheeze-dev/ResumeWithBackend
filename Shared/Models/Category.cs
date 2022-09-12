@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 using Shared.Models.CustomValidations;
 
 namespace Shared.Models

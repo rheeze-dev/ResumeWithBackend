@@ -1,5 +1,4 @@
 ﻿@page "/admin/categories"
-@using System.Net
 
 <AuthorizeView Roles="Administrator">
 	<Authorized Context="Auth">
@@ -95,7 +94,7 @@
 							@if (_unsuccessfullyTriedToDeleteACategory == true)
 							{
 								<Toast IsError="true" ToastTitle="Delete failed."
-								   ToastBody="@($"The reason is \"{_reasonUnsuccessfullyTriedToDeleteACategory}\" Please try again and if the issue persists contact the administrator.")"
+								   ToastBody="@($"{_reasonUnsuccessfullyTriedToDeleteACategory}")"
 								   ParentMethodToCallOnClickBtnClose="() => _unsuccessfullyTriedToDeleteACategory = false" />
 							}
 
@@ -157,7 +156,7 @@
 				}
 			}
 
-			_reasonUnsuccessfullyTriedToDeleteACategory = $"The category still has posts in it. Please delete the posts titled {postTitlesThatMustBeDeletedFirst} first.";
+			_reasonUnsuccessfullyTriedToDeleteACategory = $"This category still has posts in it. Please delete the posts titled {postTitlesThatMustBeDeletedFirst} before deleting this category.";
 			_unsuccessfullyTriedToDeleteACategory = true;
 		}
 		else

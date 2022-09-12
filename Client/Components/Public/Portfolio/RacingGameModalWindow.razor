@@ -1,0 +1,129 @@
+﻿<div class="modal fade @_modalClass" id="informationalModal" tabindex="-1" aria-labelledby="informationalModalLabel" role="dialog" style="display:@_modalDisplay">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="informationalModalLabel">Racing Game</h5>
+                <button @onclick="CloseModal" type="button" class="btn-close" data-bs-dismiss="modal" aira-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="carouselWithIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselWithIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    </div>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="assets/img/publicbackgrounds/RacingGame.png" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/RacingGame.png" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>
+
+                        <div class="carousel-item">
+                            <a href="assets/img/publicbackgrounds/RacingGame-1.png" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/RacingGame-1.png" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>
+
+                        <div class="carousel-item">
+                            <a href="assets/img/publicbackgrounds/RacingGame-2.png" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/RacingGame-2.png" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>
+
+                        <div class="carousel-item">
+                            <a href="assets/img/publicbackgrounds/RacingGame-3.png" target="_blank">
+
+                                <img src="assets/img/publicbackgrounds/RacingGame-3.png" class="d-block w-100" alt="Portfolio project carousel image" />
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselWithIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselWithIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <p class="text-muted my-2">
+                    Click an image to view it full screen (opens a new tab).
+                </p>
+
+                <a href="https://racinggame.rheeze.online/" class="btn btn-lg d-block mx-5 btn-primary mt-5 shadow" target="_blank">
+                    <i class="fas fa-laptop-code"></i> Live Demo
+                </a>
+
+                <a href="https://github.com/rheeze-dev/RacingGame" class="btn btn-lg d-block mx-5 bg-dark text-white mt-3 shadow" target="_blank">
+                    <i class="fab fa-github-square"></i> Github Repo
+                </a>
+
+                <h1 class="mt-5">Description</h1>
+
+                <p>
+                    Technologies to create this game are JavaScript, CSS, HTML and DOM manipulation. Game instructions: This game is a racing game. 
+                    First player to reach the score of 30 wins the game. Click on ROLL DICE button to roll a dice. If 1 is rolled, it will automatically 
+                    switch to the next player and your current score will reset to 0. Click the HOLD button to add your current score to your total 
+                    score. If you click this button, your current score will be added to your total score and it will switch to the other player. 
+                    When a player reaches the score of 30, ROLL DICE button and HOLD button will no longer work. You need to click the NEW GAME button 
+                    inorder to play again.
+                </p>
+
+                <h1 class="mt-5">Core Features</h1>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>javaScript</li>
+                    <li>DOM manipulation</li>
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button @onclick="CloseModal" type="button" class="btn btn-primary btn-lg shadow" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (_showBackdrop == true)
+{
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code
+{
+    [Parameter] public EventCallback ParentMethodToCallOnClickBtnClose { get; set; }
+    private string _modalDisplay = null;
+    private string _modalClass = null;
+    private bool _showBackdrop = false;
+
+    protected override void OnInitialized() => ShowModal();
+
+    private void ShowModal()
+    {
+        _modalDisplay = "block;";
+        _modalClass = "show";
+        _showBackdrop = true;
+    }
+
+    private void CloseModal()
+    {
+        _modalDisplay = "none;";
+        _modalClass = string.Empty;
+        _showBackdrop = false;
+        ParentMethodToCallOnClickBtnClose.InvokeAsync();
+    }
+}

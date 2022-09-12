@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Shared.Models;
-using System;
-
-namespace Server.Data
+﻿namespace Server.Data
 {
     public class AppDbContext : IdentityDbContext
     {
@@ -93,7 +87,7 @@ namespace Server.Data
                     Content = string.Empty,
                     PublishDate = DateTime.UtcNow.ToString("dd/MM/yyyy hh:mm"),
                     Published = true,
-                    Author = "John Doe",
+                    Author = "Rheeze Gyver Kalahi",
                     CategoryId = categoryId
                 };
             }
